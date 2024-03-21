@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp4dj8kkfoxch"]
+
+[ext_resource type="PackedScene" uid="uid://dslpmh7u4fygc" path="res://scenes/bg.tscn" id="1_62jur"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_ihu1j"]
+[ext_resource type="Texture2D" uid="uid://0uuoei4u25k2" path="res://assets/textures/bg/Pink.png" id="2_8f2n6"]
+[ext_resource type="FontFile" uid="uid://ppqjn7d2dbwc" path="res://assets/fonts/Kenney Pixel Square.ttf" id="4_1v4ow"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y7ag4"]
+font = ExtResource("4_1v4ow")
+font_size = 52
+font_color = Color(0.54902, 0.435294, 0.0901961, 1)
+outline_size = 10
+outline_color = Color(0.988235, 0.627451, 0.733333, 1)
+
+[sub_resource type="Theme" id="Theme_lwidq"]
+default_font = ExtResource("4_1v4ow")
+default_font_size = 32
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ihu1j")
+
+[node name="BG" parent="." instance=ExtResource("1_62jur")]
+bg_texture = ExtResource("2_8f2n6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Martian Mike!"
+label_settings = SubResource("LabelSettings_y7ag4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -21.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_lwidq")
+alignment = 1
+
+[node name="Start" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Quit" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Panel/HBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -7,13 +7,50 @@ class_name Player
 @export var speed := 125
 @export var jump_force := 200
 
+var active = true
+
 func _physics_process(delta: float) -> void:
-	if is_on_floor() == false :
-		velocity.y += clamp(delta * gravity, 0, 500)
+	if !active:
+		return
+	var direction = Input.get_axis("move_left", "move_right")
+	if is_on_floor():
+		player_on_the_floor(direction)
+	else:
+		player_in_the_air(direction, delta)
+
+	velocity.x =  direction * speed
 	
+	move_and_slide()
+
+func player_on_the_floor(direction: int) -> void:
 	if Input.is_action_just_pressed("jump"):
-		velocity.y -= jump_force
+		jump(jump_force)
 		animated_sprite_2d.play("jump")
 	
-	velocity.x = Input.get_axis("move_left", "move_right") * speed
-	move_and_slide()
+	update_animation_floor(direction)
+	
+func player_in_the_air(direction: int, delta: float) -> void:
+	fall(delta)
+	update_animation_air(direction)
+
+func update_animation_air(direction: int) -> void:
+	if velocity.y < 0:
+		animated_sprite_2d.play("jump")
+	else: 
+		animated_sprite_2d.play("fall")
+	
+func update_animation_floor(direction: int) -> void:
+	if direction == 0:
+		animated_sprite_2d.play("idle")
+	else:
+		animated_sprite_2d.flip_h = (direction == -1)
+		animated_sprite_2d.play("run")
+
+func fall(delta) -> void:
+	velocity.y += clamp(delta * gravity, 0, 500)
+	
+func stop() -> void:
+	velocity = Vector2.ZERO
+	
+func jump(force):
+	velocity.y = -force

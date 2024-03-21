@@ -199,7 +199,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jrlgu"]
 size = Vector2(20, 26)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 15
 script = ExtResource("1_1qhn0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -213,3 +214,4 @@ position = Vector2(1, -13)
 shape = SubResource("RectangleShape2D_jrlgu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 255

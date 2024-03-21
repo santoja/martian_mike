@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://r31l7pd07cro"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_sow7i"]
+[ext_resource type="PackedScene" uid="uid://dslpmh7u4fygc" path="res://scenes/bg.tscn" id="2_w41ik"]
+[ext_resource type="PackedScene" uid="uid://v1si76s13mvx" path="res://scenes/player.tscn" id="3_4fc5t"]
+[ext_resource type="PackedScene" uid="uid://bv7ws0ny1k22m" path="res://scenes/deathzone.tscn" id="4_6pnvi"]
+[ext_resource type="PackedScene" uid="uid://ucstsciljea1" path="res://scenes/exit.tscn" id="5_y6mcc"]
+[ext_resource type="PackedScene" uid="uid://d1qyx4tmaaoxs" path="res://scenes/start.tscn" id="6_h104q"]
+[ext_resource type="PackedScene" uid="uid://ccll418vogf2c" path="res://scenes/tile_map.tscn" id="7_nxvd8"]
+[ext_resource type="PackedScene" uid="uid://2djqfuarg22r" path="res://scenes/ui_layer.tscn" id="8_0k3ol"]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_sow7i")
+is_final_level = true
+
+[node name="BG" parent="." instance=ExtResource("2_w41ik")]
+
+[node name="Player" parent="." instance=ExtResource("3_4fc5t")]
+
+[node name="Deathzone" parent="." instance=ExtResource("4_6pnvi")]
+
+[node name="Exit" parent="." instance=ExtResource("5_y6mcc")]
+position = Vector2(638, 241)
+
+[node name="Start" parent="." instance=ExtResource("6_h104q")]
+position = Vector2(-39, 240)
+
+[node name="TileMap" parent="." instance=ExtResource("7_nxvd8")]
+layer_0/tile_data = PackedInt32Array(1048617, 524288, 2, 983081, 524288, 0, 1048616, 458752, 2, 983080, 458752, 0, 1048615, 458752, 2, 983079, 458752, 0, 1048614, 458752, 2, 983078, 458752, 0, 1048613, 458752, 2, 983077, 458752, 0, 1048612, 458752, 2, 983076, 458752, 0, 1048611, 458752, 2, 983075, 458752, 0, 1048610, 458752, 2, 983074, 458752, 0, 1048609, 458752, 2, 983073, 458752, 0, 1048608, 458752, 2, 983072, 458752, 0, 1048607, 458752, 2, 983071, 458752, 0, 1048606, 458752, 2, 983070, 458752, 0, 1048605, 458752, 2, 983069, 458752, 0, 1048604, 458752, 2, 983068, 458752, 0, 1048603, 458752, 2, 983067, 458752, 0, 1048602, 458752, 2, 983066, 458752, 0, 1048601, 458752, 2, 983065, 458752, 0, 1048600, 458752, 2, 983064, 458752, 0, 1048599, 458752, 2, 983063, 458752, 0, 1048598, 458752, 2, 983062, 458752, 0, 1048597, 458752, 2, 983061, 458752, 0, 1048596, 458752, 2, 983060, 458752, 0, 1048595, 458752, 2, 983059, 458752, 0, 1048594, 458752, 2, 983058, 458752, 0, 1048593, 458752, 2, 983057, 458752, 0, 1048592, 458752, 2, 983056, 458752, 0, 1048591, 458752, 2, 983055, 458752, 0, 1048590, 458752, 2, 983054, 458752, 0, 1048589, 458752, 2, 983053, 458752, 0, 1048588, 458752, 2, 983052, 458752, 0, 1048587, 458752, 2, 983051, 458752, 0, 1048586, 458752, 2, 983050, 458752, 0, 1048585, 458752, 2, 983049, 458752, 0, 1048584, 458752, 2, 983048, 458752, 0, 1048583, 458752, 2, 983047, 458752, 0, 1048582, 458752, 2, 983046, 458752, 0, 1048581, 458752, 2, 983045, 458752, 0, 1048580, 458752, 2, 983044, 458752, 0, 1048579, 458752, 2, 983043, 458752, 0, 1048578, 458752, 2, 983042, 458752, 0, 1048577, 458752, 2, 983041, 458752, 0, 1048576, 458752, 2, 983040, 458752, 0, 1114111, 458752, 2, 1048575, 458752, 0, 1114110, 458752, 2, 1048574, 458752, 0, 1114109, 458752, 2, 1048573, 458752, 0, 1114108, 393216, 2, 1048572, 393216, 0)
+
+[node name="Traps" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="UILayer" parent="." instance=ExtResource("8_0k3ol")]
