@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		player_on_the_floor(direction)
 	else:
-		player_in_the_air(direction, delta)
+		player_in_the_air(delta)
 
 	velocity.x =  direction * speed
 	
@@ -29,11 +29,11 @@ func player_on_the_floor(direction: int) -> void:
 	
 	update_animation_floor(direction)
 	
-func player_in_the_air(direction: int, delta: float) -> void:
+func player_in_the_air(delta: float) -> void:
 	fall(delta)
-	update_animation_air(direction)
+	update_animation_air()
 
-func update_animation_air(direction: int) -> void:
+func update_animation_air() -> void:
 	if velocity.y < 0:
 		animated_sprite_2d.play("jump")
 	else: 
@@ -53,4 +53,5 @@ func stop() -> void:
 	velocity = Vector2.ZERO
 	
 func jump(force):
+	AudioPlayer.play_sfx("jump")
 	velocity.y = -force

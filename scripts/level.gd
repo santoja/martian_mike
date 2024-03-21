@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var next_level: PackedScene
-@export var level_max_time := 5
+@export var level_max_time := 60
 @export var is_final_level := false
 
 @onready var start: StartPosition = $Start
@@ -27,7 +27,7 @@ func _ready() -> void:
 	start_timer()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("reset"):
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	
 
 
-func _on_deathzone_body_entered(body: Node2D) -> void:
+func _on_deathzone_body_entered(_body: Node2D) -> void:
 	player_fell()
 
 
@@ -43,6 +43,7 @@ func player_fell() -> void:
 	player_died()
 
 func player_died() -> void:
+	AudioPlayer.play_sfx("hurt")
 	player.global_position = start.global_position
 	player.stop()
 

@@ -2,15 +2,10 @@ extends Control
 
 @onready var label: Label = $Label
 
-@export var initial_color := Color.hex(0x93318bff)
+@export var initial_color := Color.hex(0xa83d9fff)
 @export var final_color := Color.hex(0x8c6f17ff)
 
 var current_color_transition = 0
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	label.label_settings.font_color
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

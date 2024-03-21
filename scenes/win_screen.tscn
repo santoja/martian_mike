@@ -53,6 +53,6 @@ offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_maeyw")
-text = "Great!!"
+text = "Great!!!"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
